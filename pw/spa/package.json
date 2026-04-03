@@ -1,0 +1,14 @@
+{
+  "name": "spa-todo-raiz",
+  "version": "1.0.0",
+  "description": "SPA To-Do na raiz do repositório (public/)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^4.22.1",
+    "express-session": "^1.19.0"
+  }
+}
