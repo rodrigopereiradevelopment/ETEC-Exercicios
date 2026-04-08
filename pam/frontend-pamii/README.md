@@ -1,5 +1,0 @@
-#### Projeto 1 - PAM II
-
-Integrantes:
-    *Rodrigo Pereira
-    *Bruno Capra
