@@ -28,23 +28,23 @@ class ListUsuarioPage extends HTMLElement {
         return [
             {
                 "id": 1,
-                "nome": "Diego Pires",
-                "usuario": "diego.pires",
-                "senha": "123abc@",
+                "nome": "Rodrigo Pereira",
+                "usuario": "rodrigo.pereira",
+                "senha": "rp@123",
                 "perfil": 1
             },
             {
                 "id": 2,
                 "nome": "João da Couves",
                 "usuario": "joao.couve",
-                "senha": "123abc@",
+                "senha": "rp@123",
                 "perfil": 0
             },
             {
                 "id": 3,
                 "nome": "Fulano da Silva",
                 "usuario": "fulano.silva",
-                "senha": "123abc@",
+                "senha": "rp@123",
                 "perfil": 0
             }
         ]
