@@ -263,7 +263,7 @@ describe('Api Service', () => {
       await expect(api.request('/produto')).rejects.toThrow(
         'Sessão expirada. Faça login novamente.',
       );
-      expect(localStorageMock.clear).toHaveBeenCalled();
+      expect(localStorageMock.removeItem).toHaveBeenCalledWith('token');
       expect(window.location.href).toContain('#/login');
     });
 
@@ -671,6 +671,45 @@ describe('Api Service', () => {
 
       await expect(api.login('admin', 'senha123')).rejects.toThrow(
         'A requisição excedeu o tempo limite. Verifique sua conexão.',
+      );
+    });
+
+    it('deve lançar erro genérico do servidor para status 500 com mensagem no login', async () => {
+      const mockResponse = {
+        ok: false,
+        status: 500,
+        json: jest.fn().mockResolvedValue({ message: 'Erro interno do servidor' }),
+      };
+      fetch.mockResolvedValue(mockResponse);
+
+      await expect(api.login('admin', 'senha123')).rejects.toThrow(
+        'Erro interno do servidor',
+      );
+    });
+
+    it('deve lançar fallback "Erro no servidor (status)" quando login falha e json não retorna message', async () => {
+      const mockResponse = {
+        ok: false,
+        status: 502,
+        json: jest.fn().mockResolvedValue({}),
+      };
+      fetch.mockResolvedValue(mockResponse);
+
+      await expect(api.login('admin', 'senha123')).rejects.toThrow(
+        'Erro no servidor (502)',
+      );
+    });
+
+    it('deve lançar fallback "Erro no servidor (status)" quando login falha e json lança exceção', async () => {
+      const mockResponse = {
+        ok: false,
+        status: 503,
+        json: jest.fn().mockRejectedValue(new Error('Invalid JSON')),
+      };
+      fetch.mockResolvedValue(mockResponse);
+
+      await expect(api.login('admin', 'senha123')).rejects.toThrow(
+        'Erro no servidor (503)',
       );
     });
   });
