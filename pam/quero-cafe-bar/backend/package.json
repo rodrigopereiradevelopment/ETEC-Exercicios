@@ -18,14 +18,15 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js --dataSource src/config/orm.config.ts",
-    "make:migration": "yarn typeorm migration:generate",
-    "migrate": "yarn typeorm migration:run",
-    "migrate:rollback": "yarn typeorm migration:revert"
+    "make:migration": "npm typeorm migration:generate",
+    "migrate": "npm typeorm migration:run",
+    "migrate:rollback": "npm typeorm migration:revert"
   },
   "dependencies": {
     "@nestjs/common": "11.0.1",
     "@nestjs/config": "4.0.3",
     "@nestjs/core": "11.0.1",
+    "@nestjs/jwt": "^11.0.2",
     "@nestjs/mapped-types": "2.1.0",
     "@nestjs/platform-express": "11.0.1",
     "@nestjs/typeorm": "11.0.0",
@@ -45,7 +46,7 @@
     "@nestjs/schematics": "11.0.0",
     "@nestjs/testing": "11.0.1",
     "@types/express": "5.0.0",
-    "@types/jest": "29.5.12",
+    "@types/jest": "^29.5.12",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "22.10.7",
     "@types/supertest": "6.0.2",
